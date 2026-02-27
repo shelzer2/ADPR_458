@@ -18,6 +18,24 @@ h2 {
 color: #d1633c;
 font-size: 1em;
 }
+p {
+    color: #DDD618;
+}
 header{
     background-color: aquamarine;
+}
+
+.about-us-container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.our-work-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.contact-us-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
