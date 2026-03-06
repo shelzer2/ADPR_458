@@ -39,19 +39,22 @@ header{
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
-.button: link, .button:visited {
+nav {
+    background-color: aqua;
+}
+.btn:link, .btn:visited {
     color: white;
-    background-color: #9abcdf8;
+    background-color: #9abcdf;
     text-align: center;
     text-decoration: none;
     padding: 1rem 1.75rem;
     border-radius: .5rem;
     box-shadow: 0 .125rem .5rem rgba(0, 0, 0, .15);
     display: inline-block;
-    margin 0 .25 rem .25rem 0;
+    margin: 0 .25rem .25rem 0;
     transition: background-color 0.5s ease;
 }
-.button:hover {
+.btn:hover {
     background-color: #6e8fc7;
 }
 ul {
