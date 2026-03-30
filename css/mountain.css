@@ -1,0 +1,186 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.side-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.side-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.nav-center a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-right button {
+  padding: 8px 16px;
+}
+
+.listing-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+.sub {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.highlight-box {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.host {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.host img {
+  border-radius: 50%;
+}
+
+.features div {
+  margin-bottom: 15px;
+}
+
+.description {
+  margin: 20px 0;
+  color: #333;
+}
+
+.show-more {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+}
+
+.listing-right {
+  position: relative;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+  background: #fff;
+}
+
+.card h3 {
+  margin-bottom: 20px;
+}
+
+.card span {
+  font-weight: normal;
+  color: #555;
+}
+
+.dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dates div {
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.dates div:last-child {
+  border-right: none;
+}
+
+.guests {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.reserve {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  background: #ff385c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.note {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.nav-left img{
+   width: 150px;
+   height: 75px;
+   object-fit: contain;
+   min-width: 0;
+   min-height: 0;
+   display: block;
+}
