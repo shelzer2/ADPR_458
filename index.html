@@ -3,167 +3,787 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sam Helzer Portfolio</title>
+  <title>Sam Helzer | Portfolio</title>
+  <meta
+    name="description"
+    content="Portfolio homepage for Sam Helzer featuring creative work, resume access, and contact information."
+  />
   <style>
+    :root {
+      --bg: #f5f5f3;
+      --surface: #ffffff;
+      --surface-2: #f0f0ec;
+      --text: #161616;
+      --muted: #5e5e5e;
+      --line: #d9d9d1;
+      --accent: #e53935;
+      --accent-dark: #c92c29;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --max-width: 1180px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #e9e9e9;
-      color: #111;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
-      width: 100%;
-      max-width: 1200px;
+      width: min(var(--max-width), calc(100% - 2rem));
       margin: 0 auto;
-      padding: 20px 30px;
     }
 
-  
-    header {
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(245, 245, 243, 0.88);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-wrap {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 50px;
-    }
-
-    .logo {
-      font-size: 2rem;
-      font-weight: 500;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #111;
-      font-size: 1.1rem;
-    }
-
-    .hero {
-      display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 60px;
-      margin-bottom: 60px;
+      gap: 1rem;
+      min-height: 78px;
     }
 
-    .card {
-      width: 45%;
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
-    .card h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
     }
 
-    .card p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
+    .nav-links a {
+      font-size: 0.98rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
     }
 
-    .image-placeholder {
-      width: 220px;
-      height: 180px;
-      background-color: #9a9a9a;
-      margin-bottom: 20px;
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
     }
 
-    .btn {
-      display: inline-block;
-      background-color: red;
-      color: white;
-      text-decoration: none;
-      padding: 12px 28px;
-      border-radius: 8px;
+    .menu-button {
+      display: none;
+      border: none;
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 0.65rem 0.85rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
       font-size: 1rem;
     }
 
-    
-    .cta-box {
-      width: 65%;
-      min-height: 130px;
-      background-color: #d3d3d3;
-      padding: 20px;
-      margin-bottom: 30px;
+    .hero {
+      padding: 5.5rem 0 2.5rem;
     }
 
-    .footer-button {
-      background-color: black;
-      padding: 20px 0 40px 0;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: stretch;
     }
 
-    .footer-button .btn {
-      margin-left: 30px;
+    .hero-card,
+    .feature-card,
+    .cta-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
+    .hero-card {
+      padding: 3rem;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-    @media (max-width: 768px) {
-      header,
-      .hero {
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+      max-width: 10ch;
+    }
+
+    .hero-copy {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 48px;
+      padding: 0.85rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: var(--surface-2);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .meta-block span {
+      display: block;
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-block strong {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 560px;
+      background: linear-gradient(180deg, #fdfdfc 0%, #f3f3ef 100%);
+    }
+
+  .portrait {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+    .portrait-badge {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 999px;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    .mini-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .mini-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .mini-panel h3 {
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .mini-panel p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 2rem 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 52ch;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .feature-card {
+      overflow: hidden;
+    }
+
+    .feature-image {
+      aspect-ratio: 16 / 10;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature-card:nth-child(1) .feature-image {
+      background-image: linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.08)), url("https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .feature-card:nth-child(2) .feature-image {
+      background-image: linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.08)), url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .feature-card:nth-child(3) .feature-image {
+      background-image: linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.08)), url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .feature-content {
+      padding: 1.35rem;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .feature-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .feature-content p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .inline-link {
+      font-weight: 700;
+    }
+
+    .inline-link:hover,
+    .inline-link:focus-visible {
+      color: var(--accent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .about-panel,
+    .cta-panel {
+      padding: 2rem;
+    }
+
+    .about-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-panel h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-panel p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .skill-list li {
+      padding: 0.55rem 0.9rem;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+
+    .cta-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      background: linear-gradient(135deg, #151515 0%, #262626 100%);
+      color: #fff;
+      border: none;
+    }
+
+    .cta-panel h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 0.65rem;
+    }
+
+    .cta-panel p {
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 48ch;
+    }
+
+    .cta-panel .btn-secondary {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .cta-panel .btn-secondary:hover,
+    .cta-panel .btn-secondary:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .site-footer {
+      padding: 2rem 0 3rem;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .hero-visual {
+        min-height: auto;
+      }
+
+      .cta-panel {
         flex-direction: column;
         align-items: flex-start;
       }
+    }
 
-      .card,
-      .cta-box {
-        width: 100%;
+    @media (max-width: 760px) {
+      .menu-button {
+        display: inline-flex;
       }
 
-      nav ul {
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 15px;
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        background: rgba(245, 245, 243, 0.98);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .hero-card {
+        padding: 2rem;
+      }
+
+      .hero-meta,
+      .mini-panels {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">Sam Helzer</div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">Sam Helzer</a>
 
+      <button class="menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+
+      <ul class="nav-links" id="site-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="top">
     <section class="hero">
-      <div class="card" id="about">
-        <h2>Header</h2>
-        <p>Bio section about me</p>
-        <div class="image-placeholder"></div>
-        <a href="#resume" class="btn">Resume</a>
-      </div>
+      <div class="container hero-grid">
+        <article class="hero-card reveal">
+          <div>
+            <span class="eyebrow">Advertising • PR • Creative Strategy</span>
+            <h1>Creative work with a clear point of view.</h1>
+            <p class="hero-copy">
+              I’m Sam Helzer, an advertising and public relations student focused on strategic storytelling,
+              campaign development, digital content, and creative execution that feels sharp, modern, and human.
+            </p>
 
-      <div class="card" id="work">
-        <h2>My Creative Executions</h2>
-        <p>Bio about my work</p>
-        <div class="image-placeholder"></div>
-        <a href="#work" class="btn">My Work</a>
+            <div class="button-row">
+              <a class="btn btn-primary" href="#work">View My Work</a>
+              <a class="btn btn-secondary" href="#resume">See Resume</a>
+            </div>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-block">
+              <span>Focus</span>
+              <strong>Campaign Strategy</strong>
+            </div>
+            <div class="meta-block">
+              <span>Strength</span>
+              <strong>Brand Storytelling</strong>
+            </div>
+            <div class="meta-block">
+              <span>Based In</span>
+              <strong>Nebraska</strong>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-visual reveal">
+          <div class="portrait">
+  <img src="2N8A2796.jpg" alt="Sam Helzer portrait" />
+  <div class="portrait-badge">Open to opportunities</div>
+</div>
+
+          <div class="mini-panels">
+            <div class="mini-panel">
+              <h3>Brand Thinking</h3>
+              <p>Ideas built around audience insight, not just aesthetics.</p>
+            </div>
+            <div class="mini-panel">
+              <h3>Creative Execution</h3>
+              <p>Concepts shaped for social, digital, and campaign spaces.</p>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="cta-box">
-      <p>Call to action</p>
-    </section>
-  </div>
+    <section id="work">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <h2>Selected Work</h2>
+          </div>
+          <p>
+            A few examples of the type of strategic and creative work I enjoy most, from campaign development to content execution.
+          </p>
+        </div>
 
-  <footer class="footer-button" id="contact">
-    <a href="mailto:youremail@example.com" class="btn">Contact Me</a>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-image" role="img" aria-label="Campaign strategy project preview"></div>
+            <div class="feature-content">
+              <span class="tag">Campaign</span>
+              <h3>Brand Campaign Concepts</h3>
+              <p>
+                Strategy-led campaign work shaped by audience research, messaging, and clean creative direction.
+              </p>
+              <a class="inline-link" href="#contact">View Project →</a>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-image" role="img" aria-label="Digital content project preview"></div>
+            <div class="feature-content">
+              <span class="tag">Content</span>
+              <h3>Digital & Social Work</h3>
+              <p>
+                Execution across visual content, social ideas, and storytelling tailored for modern audiences.
+              </p>
+              <a class="inline-link" href="#contact">View Project →</a>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-image" role="img" aria-label="Portfolio case study preview"></div>
+            <div class="feature-content">
+              <span class="tag">Case Study</span>
+              <h3>Research-Backed Creative</h3>
+              <p>
+                Work that connects research, positioning, and execution into a polished final concept.
+              </p>
+              <a class="inline-link" href="#contact">View Project →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <h2>About Me</h2>
+          </div>
+          <p>
+            I like work that feels visually strong, strategically grounded, and actually built for the audience it’s meant to reach.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-panel reveal">
+            <h3>Who I Am</h3>
+            <p>
+              I’m a creative communicator with interests in advertising, public relations, branding, and content strategy.
+              My goal is to create work that looks polished but still says something real.
+            </p>
+            <p>
+              I’m especially interested in campaign thinking, digital storytelling, audience insight, and building ideas that can live across multiple platforms.
+            </p>
+          </div>
+
+          <div class="about-panel reveal" id="resume">
+            <h3>Skills & Tools</h3>
+            <p>
+              My work often combines strategic planning with execution across writing, design, and digital media.
+            </p>
+            <ul class="skill-list">
+              <li>Creative Strategy</li>
+              <li>Copywriting</li>
+              <li>Brand Messaging</li>
+              <li>Campaign Development</li>
+              <li>Adobe Creative Suite</li>
+              <li>Social Content</li>
+              <li>Research</li>
+              <li>Presentation Design</li>
+            </ul>
+
+            <div class="button-row" style="margin-top: 1.25rem; margin-bottom: 0;">
+              <a class="btn btn-primary" href="Sam Helzer Resume (3).pdf" target="_blank" rel="noopener">Download Resume</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-panel reveal" id="contact">
+          <div>
+            <h2>Let’s build something strong.</h2>
+            <p>
+              Whether it’s campaign work, content creation, or a creative collaboration, I’m always interested in thoughtful projects and new opportunities.
+            </p>
+          </div>
+
+          <div class="button-row" style="margin-bottom: 0;">
+            <a class="btn btn-primary" href="mailto:helzer.sam@gmail.com">Contact Me</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/samuel-helzer-926834335/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 Sam Helzer. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuButton && navLinks) {
+      menuButton.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+  </script>
 </body>
 </html>
