@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Title | Sam Helzer</title>
+  <meta name="description" content="Project case study page for Sam Helzer's portfolio." />
+  <style>
+    :root {
+      --bg: #f5f5f3;
+      --surface: #ffffff;
+      --surface-2: #f0f0ec;
+      --text: #161616;
+      --muted: #626262;
+      --line: #dbdbd3;
+      --accent: #e53935;
+      --accent-dark: #c92c29;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(245, 245, 243, 0.9);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-wrap {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links .active {
+      color: var(--text);
+    }
+
+    .menu-button {
+      display: none;
+      border: none;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+      padding: 0.65rem 0.9rem;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 2.5rem 0 4rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-copy,
+    .hero-image,
+    .content-card,
+    .metric-card,
+    .next-project {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+      max-width: 11ch;
+    }
+
+    .project-summary {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 54ch;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-meta div {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem;
+    }
+
+    .project-meta span {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .project-meta strong {
+      font-size: 0.98rem;
+    }
+
+    .hero-image {
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .hero-image img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .metric-card {
+      padding: 1.4rem;
+    }
+
+    .metric-card span {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-card strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .metric-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .content-card {
+      padding: 2rem;
+    }
+
+    .content-card + .content-card {
+      margin-top: 1.25rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p + p {
+      margin-top: 0.9rem;
+    }
+
+    .lead {
+      color: var(--muted);
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .bullet-list li {
+      padding-left: 1rem;
+      position: relative;
+      color: var(--muted);
+    }
+
+    .bullet-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+    }
+
+    .image-stack {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .image-frame {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .image-frame img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .image-caption {
+      padding: 0.85rem 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 96px;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .tag-list li {
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      font-size: 0.9rem;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: var(--surface-2);
+    }
+
+    .next-project {
+      padding: 1.75rem 2rem;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .next-project p {
+      color: var(--muted);
+    }
+
+    .site-footer {
+      padding: 0 0 3rem;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding-top: 1.35rem;
+    }
+
+    .footer-wrap nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .content-grid,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        background: rgba(245, 245, 243, 0.98);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero-copy,
+      .content-card,
+      .next-project {
+        padding: 1.5rem;
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-wrap,
+      .next-project {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .video-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-frame video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">Sam Helzer</a>
+
+      <button class="menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+
+      <ul class="nav-links" id="site-nav">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#work" class="active">Work</a></li>
+        <li><a href="index.html#resume">Resume</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <a class="back-link reveal" href="index.html#work">← Back to selected work</a>
+
+      <section class="hero">
+        <article class="hero-copy reveal">
+          <div>
+            <span class="eyebrow">KRNU Radio Program</span>
+            <h1>So Bad It's Good</h1>
+            <p class="project-summary">
+              A satirical movie review podcast that delves into what makes our favorite "bad movies" so good.
+            </p>
+          </div>
+
+          <div class="project-meta">
+            <div>
+              <span>Role</span>
+              <strong>Creative Strategy / Design</strong>
+            </div>
+            <div>
+              <span>Timeline</span>
+              <strong>Fall 2025 - Spring 2026</strong>
+            </div>
+            <div>
+              <span>Deliverables</span>
+              <strong>Monthly Episodes / Social Media Presence / Audience Connection</strong>
+            </div>
+          </div>
+        </article>
+
+        <div class="hero-image reveal">
+          <img src="SBIG_LOGO_2.png"  />
+        </div>
+      </section>
+
+      <section class="metrics">
+        <article class="metric-card reveal">
+          <span>The Goal</span>
+          <strong>What was expected?</strong>
+          <p>KRNU Experience Lab requires the production and promotion of multiple installations of listener-relevent content that is creatively unique.</p>
+        </article>
+
+        <article class="metric-card reveal">
+          <span>The Audience</span>
+          <strong>Who was it for?</strong>
+          <p>This show targeted Gen-Z media fans that have sarcastic taste and engage with online discussions regarding popular movies.</p>
+        </article>
+
+        <article class="metric-card reveal">
+          <span>The Outcome</span>
+          <strong>What was the result?</strong>
+          <p>A cohesive brand and audio style that captured listeners across the United States.</p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <div>
+          <article class="content-card reveal">
+            <h2>Overview</h2>
+            <p class="lead">
+              90.3 KRNU is a student-focused and led radio station that promotes underground music and off-the-wall podcast production.  Students work to create unique shows that cater to specific audiences while generating a brand and social media presence.
+            </p>
+          </article>
+
+          <article class="content-card reveal">
+            <h2>The Process</h2>
+            <h3>What I focused on</h3>
+            <ul class="bullet-list">
+              <li>Script/copywriting and post-production</li>
+              <li>Message development and tone</li>
+              <li>Visual direction and execution</li>
+              <li>Platform-specific creative decisions</li>
+            </ul>
+
+
+
+        <aside class="sidebar">
+          <article class="content-card reveal">
+            <h2>Project Snapshot</h2>
+            <ul class="tag-list">
+              <li>Brand Strategy</li>
+              <li>Creative Concepting</li>
+              <li>Social Content</li>
+              <li>Presentation Design</li>
+            </ul>
+          </article>
+
+          <article class="content-card reveal">
+            <h2>Links</h2>
+            <p class="lead">View all project assets here.</p>
+            <div class="button-row">
+              <a class="btn btn-primary" href="#">View PDF</a>
+              <a class="btn btn-secondary" href="#">Live Link</a>
+            </div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="next-project reveal">
+        <div>
+          <h2 style="margin-bottom: 0.35rem;">Next project</h2>
+        </div>
+        <a class="btn btn-primary" href="project-2.html">View Next Project</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 Sam Helzer. All rights reserved.</p>
+      <nav>
+        <a href="index.html#about">About</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuButton && navLinks) {
+      menuButton.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>
